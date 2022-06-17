@@ -52,6 +52,6 @@ alias pbcopy="xclip -selection c"
 alias pbpaste="xclip -selection c -o"
 
 alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
-alias pip-export-req="pip freeze | grep -v "pkg_resources" >| requirements.txt"
+alias pip-export-req="pip freeze | grep -v 'pkg_resources' >| requirements.txt"
 
 alias reboot-windows="sudo efibootmgr --bootnext 0000 && systemctl reboot"
