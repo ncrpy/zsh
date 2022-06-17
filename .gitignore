@@ -1,0 +1,12 @@
+.zprezto
+!.zprezto/
+.zprezto/*
+.zcompdump
+.zlogin
+.zlogout
+.zpreztorc
+.zprofile
+.zshenv
+.zsh_history
+.zshrc
+!.zprezto/runcoms/

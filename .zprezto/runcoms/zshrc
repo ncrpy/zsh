@@ -1,0 +1,57 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] || source "${ZDOTDIR:-$HOME}/.p10k.zsh"
+
+chpwd() {
+  venv_dir=$(pwd)
+  while [[ $venv_dir =~ "^${HOME}/" ]]
+  do
+    if [ -d $venv_dir/venv ]; then
+      source $venv_dir/venv/bin/activate
+      break
+    else
+      venv_dir=$(dirname $venv_dir)
+    fi
+  done
+}
+
+function venv() {
+  venv_path=$HOME/.venv/${1:-$(basename $(pwd))}
+  if [ ! -d $venv_path ]; then
+    python3 -m venv $venv_path
+  fi
+  ln -s $venv_path venv
+  source venv/bin/activate
+}
+
+alias .="cd ."
+alias sudo="sudo "
+alias nv="nvim"
+
+alias pbcopy="xclip -selection c"
+alias pbpaste="xclip -selection c -o"
+
+alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
+alias pip-export-req="pip freeze | grep -v "pkg_resources" >| requirements.txt"
+
+alias reboot-windows="sudo efibootmgr --bootnext 0000 && systemctl reboot"
