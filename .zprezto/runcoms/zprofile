@@ -49,13 +49,21 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ./node_modules/.bin(N-/)
   $HOME/.cargo/bin(N-/)
   $HOME/.deno/bin(N-/)
   $HOME/.local/{,s}bin(N-/)
   $HOME/{,s}bin(N-/)
+  /usr/local/cuda/bin(N-/)
+  /usr/local/MATLAB/R2020b/bin(N-/)
   /opt/{homebrew,local}/{,s}bin(N-/)
   /usr/local/{,s}bin(N-/)
   $path
+  /home/linuxbrew/.linuxbrew/bin(N-/)
+)
+manpath=(
+    $manpath
+    /home/linuxbrew/.linuxbrew/share/man(N-/)
 )
 
 #
