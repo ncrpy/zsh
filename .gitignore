@@ -10,3 +10,4 @@
 .zsh_history
 .zshrc
 !.zprezto/runcoms/
+.zprezto/runcoms/README.md
