@@ -9,4 +9,5 @@
 .zshenv
 .zsh_history
 .zshrc
+.zshrc.local
 !.zprezto/runcoms/
