@@ -55,4 +55,4 @@ alias pip-export-req="pip freeze | grep -v 'pkg_resources' >| requirements.txt"
 
 alias reboot-windows="sudo efibootmgr --bootnext 0000 && sudo systemctl reboot"
 
-[[ -f "${ZDOTDIR:-$HOME}/.zshrc.local" ]] && source "${ZDOTDIR:-$HOME}/.zshrc.local"
+[[ -f "${ZDOTDIR:-$HOME}/.zshrc_local" ]] && source "${ZDOTDIR:-$HOME}/.zshrc.local"
