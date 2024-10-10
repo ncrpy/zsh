@@ -1,9 +1,4 @@
 .zcompdump
-.zlogin
-.zlogout
-.zpreztorc
-.zprofile
-.zshenv
 .zsh_history
-.zshrc
+.zsh_plugins.zsh
 .zshrc_local

@@ -1,0 +1,13 @@
+# .zsh_plugins.txt
+
+# frameworks
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+
+# themes
+romkatv/powerlevel10k
+
+# fish-like features
+zsh-users/zsh-autosuggestions kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+olets/zsh-abbr
