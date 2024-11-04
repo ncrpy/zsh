@@ -14,29 +14,23 @@ fi
 [[ ! -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] || source "${ZDOTDIR:-$HOME}/.p10k.zsh"
 
 chpwd() {
-  venv_dir=$(pwd)
-  while [[ $venv_dir =~ "^${HOME}/" ]]
+  venv_dir="$(pwd)"
+  while [[ "$venv_dir" =~ "^${HOME}/" ]]
   do
-    if [ -d $venv_dir/venv ]; then
-      source $venv_dir/venv/bin/activate
+    if [[ -d "${venv_dir}/.venv" ]]; then
+      source "${venv_dir}/.venv/bin/activate"
       break
     else
-      venv_dir=$(dirname $venv_dir)
+      venv_dir="$(dirname "$venv_dir")"
     fi
   done
-}
-
-function venv() {
-  venv_path=$HOME/.venv/${1:-$(basename $(pwd))}
-  if [ ! -d $venv_path ]; then
-    python3 -m venv $venv_path
+  if [[ "$venv_dir" == "$HOME" && -n "$VIRTUAL_ENV" ]]; then
+    deactivate
   fi
-  ln -s $venv_path venv
-  source venv/bin/activate
 }
 
 alias reboot-windows="sudo ~/.reboot_windows.sh"
 
-abbr --quiet nv="nvim"
+abbr -S --quiet nv="nvim"
 
-[[ -f "${ZDOTDIR:-$HOME}/.zshrc_local" ]] && source "${ZDOTDIR:-$HOME}/.zshrc_local"
+[[ ! -f "${ZDOTDIR:-$HOME}/.zshrc_local" ]] || source "${ZDOTDIR:-$HOME}/.zshrc_local"
