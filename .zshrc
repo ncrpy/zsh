@@ -13,6 +13,13 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] || source "${ZDOTDIR:-$HOME}/.p10k.zsh"
 
+# Launch GPG agent.
+# gpg-connect-agent --quiet /bye > /dev/null
+if [[ -x /usr/bin/gpg-agent ]]; then
+  export GPG_TTY=$(tty)
+  gpg-connect-agent --quiet updatestartuptty /bye > /dev/null
+fi
+
 chpwd() {
   venv_dir="$(pwd)"
   while [[ "$venv_dir" =~ "^${HOME}/" ]]
