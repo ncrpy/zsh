@@ -8,6 +8,7 @@ ohmyzsh/ohmyzsh path:lib
 romkatv/powerlevel10k
 
 # fish-like features
+zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 olets/zsh-abbr
