@@ -20,6 +20,9 @@ if [[ -x /usr/bin/gpg-agent ]]; then
   gpg-connect-agent --quiet updatestartuptty /bye > /dev/null
 fi
 
+# Activate mise environment.
+[[ -x "${HOME}/.local/bin/mise" ]] && eval "$(${HOME}/.local/bin/mise activate zsh)"
+
 chpwd() {
   venv_dir="$(pwd)"
   while [[ "$venv_dir" =~ "^${HOME}/" ]]

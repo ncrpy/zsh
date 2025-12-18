@@ -5,12 +5,9 @@ if [ -z "${ld_library_path}" ]; then
 fi
 
 export CUDA_HOME="/usr/local/cuda"
-export VOLTA_HOME="$HOME/.volta"
 
 path=(
   $HOME/.cargo/bin(N-/)
-  $VOLTA_HOME/bin(N-/)
-  $HOME/.deno/bin(N-/)
   $HOME/.local/{,s}bin(N-/)
   $HOME/{,s}bin(N-/)
   $CUDA_HOME/bin(N-/)
