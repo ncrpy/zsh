@@ -21,7 +21,7 @@ if [[ -x /usr/bin/gpg-agent ]]; then
 fi
 
 # Activate mise environment.
-[[ -x "${HOME}/.local/bin/mise" ]] && eval "$(${HOME}/.local/bin/mise activate zsh)"
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
 
 chpwd() {
   venv_dir="$(pwd)"
